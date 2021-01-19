@@ -1,6 +1,7 @@
 html{
     text-align: center;
     background-color: #f1f4fb;
+    user-select: none;
 }
 #title{
     font-weight: 200;
