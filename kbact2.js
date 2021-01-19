@@ -58,10 +58,10 @@ function result(){
         var dif = Math.abs(iptms[i] - bt16);
         var pt = 0;
         if (dif <= 5) pt = 100;
-        else if (dif <= 10) pt = 95;
-        else if (dif <= 20) pt = 90;
-        else if (dif <= 40) pt = 80;
-        else if (dif <= 60) pt = 60;
+        else if (dif <= 10) pt = 90;
+        else if (dif <= 20) pt = 80;
+        else if (dif <= 40) pt = 70;
+        else if (dif <= 60) pt = 55;
         else if (dif <= 80) pt = 30;
         else if (dif <= 100) pt = 10;
         console.log(Math.floor(pt * bpm * 1000 / 96));
