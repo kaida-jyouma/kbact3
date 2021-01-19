@@ -82,8 +82,10 @@ function result(){
     else if (score > 4000000) rank = "C";
     else if (score > 3000000) rank = "D";
     else if (score > 2000000) rank = "E";
+    
     document.getElementById('content').innerHTML = '<p class="msg_c">今回の記録</p><div id="scores"></div>';
     document.getElementById('scores').innerHTML = '<p class="p_score">Score:&#32;<span>' + score + '<p class="p_score">length:&#32;<span>' + nt + '</span>&#32;[ms]</p>' + '<p class="p_score">BPM:&#32;<span>' + bpm + '</span> / <span>300</span></p><p class="p_score">(&#32;diff:&#32;<span id="ranks">' + (Math.max(...iptms) - Math.min(...iptms)) + '</span>&#32;[ms]&#32;)</p><p class="p_score">Rank:&#32;<span id="op">' + rank + '</span><p>'/* + "<input type='button' class='selector' id='sel_rank' onclick='ranking()' value='ランキングを表示'><br>"*/ + "<input type='button' class='selector' id='rest_btn' onclick='re_start()' value='Re:&#32;Start'><br>" + "<input type='button' class='selector' id='sel_menu' onclick='mainMenu()' value='Goto:&#32;MainMenu'><br>";
+    
     console.log(iptms);
     console.log("ndtim: " + nt);
     console.log("range: " + bt16);
