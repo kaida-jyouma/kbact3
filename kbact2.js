@@ -51,8 +51,9 @@ function result(){
     var nt = last - begin;
     var bt4 = Math.round( nt / 8 );
     var bt16 = bt4 / 4;
-    var bpm = Math.round( 600000 / bt4 ) / 10;
-    
+    var mbpm = Math.round( 600000 / bt4 ) / 10;
+    if (mbpm > 300) bpm = 300;
+    else bpm = mbpm;
     for (i=0;i<iptms.length;i++){
         var dif = Math.abs(iptms[i] - bt16);
         var pt = 0;
