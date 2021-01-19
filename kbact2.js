@@ -10,9 +10,9 @@ var rg = 0;
 var score = 0;
 function start(){
     reset();
-    ctd0 = 6;
+    ctd0 = 4;
     document.getElementById('content').innerHTML = "<p class='ctdn'>" + ctd0 + "</p>";
-    setTimeout(function() {input()}, 6000);
+    setTimeout(function() {input()}, 4000);
     se0 = setInterval(function (){
         ctd0 -= 1;
         if (ctd0 < 2) clearInterval(se0);
@@ -77,8 +77,8 @@ function result(){
     else if (score > 7500000) rank = "AAA";
     else if (score > 7000000) rank = "AA";
     else if (score > 6666000) rank = "A";
-    else if (score > 6500000) rank = "BBB";
-    else if (score > 6000000) rank = "BB";
+    else if (score > 6250000) rank = "BBB";
+    else if (score > 5550000) rank = "BB";
     else if (score > 5000000) rank = "B";
     else if (score > 4000000) rank = "C";
     else if (score > 3000000) rank = "D";
