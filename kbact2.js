@@ -1,4 +1,4 @@
-// version: 1.3.3
+// version: 2.0.0
 var se0;
 var ctd0;
 var ipt = false;
@@ -9,6 +9,8 @@ var begin = 0;
 var last = 0;
 var rg = 0;
 var score = 0;
+var blj = true;
+var blf = true;
 function start(){
     reset();
     ctd0 = 4;
@@ -21,14 +23,42 @@ function start(){
     }, 1000);
 }
 function input(){
-    document.getElementById('content').innerHTML = "<p class='msg_c' id='playing' onkeyup='press()'>f/jボタンを合計あと<span id='playdisp'>" + 32 + "</span>回押してください。</p>";
+    document.getElementById('content').innerHTML = "<p class='msg_c' id='playing' onkeyup='press()'>f/jボタンを交互にあと<span id='playdisp'>" + 33 + "</span>回押してください。</p>";
     ipt = true;
 }
 function press(){
     if (ipt){
-        if (event.keyCode === 70 || event.keyCode === 74){
+        if (event.keyCode === 70 && blf){
             ctipt += 1;
-            document.getElementById('playdisp').innerHTML = 32 - ctipt;
+            document.getElementById('playdisp').innerHTML = 33 - ctipt;
+            blj = true;
+            blf = false;
+            
+            // same code in keyCode=74 
+            if (begin === 0){
+                begin = new Date().getTime();
+                rg = begin;
+                // iptms.push(begin);
+                console.log("Begin: " + begin);
+            }else if (ctipt === 33){
+                ipt = false;
+                last = new Date().getTime();
+                iptms.push(last - rg);
+                console.log("Last: " + last);
+                result();
+            }else{
+                var tm = new Date().getTime();
+                iptms.push(tm - rg);
+                rg = tm;
+            }
+            
+        }else if (event.keyCode === 74 && blj){
+            ctipt += 1;
+            document.getElementById('playdisp').innerHTML = 33 - ctipt;
+            blj = false;
+            blf = true;
+            
+            // same code in keyCode=70
             if (begin === 0){
                 begin = new Date().getTime();
                 rg = begin;
@@ -46,6 +76,28 @@ function press(){
                 rg = tm;
             }
         }
+        
+        
+        /*if (event.keyCode === 70 || event.keyCode === 74 || event.keyCode === 70 || event.keyCode === 74){
+            ctipt += 1;
+            document.getElementById('playdisp').innerHTML = 33 - ctipt;
+            if (begin === 0){
+                begin = new Date().getTime();
+                rg = begin;
+                // iptms.push(begin);
+                console.log("Begin: " + begin);
+            }else if (ctipt === 33){
+                ipt = false;
+                last = new Date().getTime();
+                iptms.push(last - rg);
+                console.log("Last: " + last);
+                result();
+            }else{
+                var tm = new Date().getTime();
+                iptms.push(tm - rg);
+                rg = tm;
+            }
+        }*/
     }
 }
 function result(){
